@@ -128,7 +128,7 @@ A: Okay. Are you mo- are you moving there for a job?<br>
 ### Out-of-Distribution (OoD) Multi-Turn Scenarios (MELD)
  **We used USDM trained on Fisher to demonstrate the generalizability of our model to OoD spoken dialog of unseen speakers.**
 
- #### Sample 1
+#### Sample 1
 Input Multi-turn Spoken Dialogues
 
 <audio controls>
