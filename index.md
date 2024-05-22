@@ -189,7 +189,7 @@ B: Yeah. [COUGH] But I'm on a cell phone, so maybe that's why.<br>
 
 **All samples for DailyTalk resampled to 16kHz.**
 
-### Spoken Response (with model-generated text response, used for human preference tests)
+### Spoken Response (with model-generated text response)
 
 #### Sample 1
 Input User Audio
@@ -197,7 +197,7 @@ Input User Audio
   <source src="wavs/DailyTalk_model_generated/1_user.wav" type="audio/wav">
 </audio>
 
-User: Not everyone. But a lot of people do, especially the young. It's a fine place to spend an evening with friends or to make some new friends.
+User: thank you. so what do you think? would we have a good time?
 
 <table>
 	<thead>
@@ -227,7 +227,7 @@ Input User Audio
   <source src="wavs/DailyTalk_model_generated/2_user.wav" type="audio/wav">
 </audio>
 
-User: I’m very well, Thank you. And you?
+User: the stone is a prehistoric log. it was turned to stone millions of years ago.
 
 <table>
 	<thead>
@@ -257,7 +257,7 @@ Input User Audio
   <source src="wavs/DailyTalk_model_generated/3_user.wav" type="audio/wav">
 </audio>
 
-User: Yes, do you like it?
+User: great. shall i meet you there around seven forty-five tomorrow night?
 
 <table>
 	<thead>
@@ -281,16 +281,16 @@ User: Yes, do you like it?
 </table>
 <br>
 
-### Spoken responses (with ground-truth text response, used for MOS and P-MOS evaluations)
+### Spoken responses (with ground-truth text response)
 #### Sample 1
 Input User Audio
 <audio controls>
   <source src="wavs/DailyTalk_ground_truth_text/1_user.wav" type="audio/wav">
 </audio>
 
-User: Linda? Is that you? I haven't seen you in ages!
+User: are you even glad that we get to buy new clothes too?
 
-Text to generate: **Hi George! It's good to see you!**
+Text to generate: **ah, that's all part of the fun. what do you think of these shorts?**
 
 <table>
 	<thead>
@@ -320,9 +320,9 @@ Input User Audio
 <audio controls>
   <source src="wavs/DailyTalk_ground_truth_text/2_user.wav" type="audio/wav">
 </audio>
-User: We are all very proud of you.
+User: the checkroom is just behind the front door.
 
-Text to generate: **I am very happy, too. It was a big game and I won.**
+Text to generate: **ok. i will deposit my bag right now.**
 
 <table>
 	<thead>
@@ -352,9 +352,9 @@ Input User Audio
 <audio controls>
   <source src="wavs/DailyTalk_ground_truth_text/3_user.wav" type="audio/wav">
 </audio>
-User: Ah, that's all part of the fun. What do you think of these shorts?
+User: a garage sale... that's where people check out cars, right?
 
-Text to generate: **They look really good on you. They look comfortable too.**
+Text to generate: **what? cars? umm are you serious?**
 
 <table>
 	<thead>
