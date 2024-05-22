@@ -3,70 +3,187 @@
 ## Abstract
 While recent work shows promising results in expanding the capabilities of large language models (LLM) to directly understand and synthesize speech, an LLM-based strategy for modeling spoken dialogs remains elusive and calls for further investigation. This paper introduces an extensive speech-text LLM framework, the Unified Spoken Dialog Model (USDM), designed to generate coherent spoken responses with naturally occurring prosodic features relevant to the given input speech without relying on explicit automatic speech recognition (ASR) or text-to-speech (TTS) systems. We have verified the inclusion of prosody in speech tokens known to predominantly contain semantic information and have used this foundation to construct a prosody-infused speech-text model. Additionally, we propose a generalized speech-text pretraining scheme that enhances the capture of cross-modal semantics. To construct USDM, we fine-tune our speech-text model on spoken dialog data using a multi-step spoken dialog template that stimulates the chain-of-reasoning capabilities exhibited by the underlying LLM. Automatic and human evaluations on the DailyTalk dataset demonstrate that our approach effectively generates natural-sounding spoken responses, surpassing previous and cascaded baselines. We will make our code and checkpoints available.
 
-## Unit-to-Speech Reconstruction Analysis (Section 3.1)
- **We extracted XLS-R based unit from the original audio, and then only those units to reconstruct the audio 3 times.** <br>
- **Through that sample, we can understand what information is contained in the units.** <br>
- **We used speech from Expresso (Nguyen et al., 2023), Fisher (Cieri et al., 2004), and GigaSpeech (Chen et al., 2021) datasets.**
- 
+## Additional Samples For Various Scenarios (Appendix A.1)
+### Expressive Spoken Dialog Dataset (Expresso)
+ **Since there were no transcripts for Expresso, we used _whisper-large-v3_ to obtain transcripts corresponding to the dataset and used them for training.**
+
 #### Sample 1
-<table>
-	<thead>
-		<tr>
-			<th style="text-align: center">Ground Truth</th>
-			<th style="text-align: center">Reconstructed Audio 1 </th>
-			<th style="text-align: center">Reconstructed Audio 2</th>
-			<th style="text-align: center">Reconstructed Audio 3</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/1_ground_truth.wav" type="audio/wav"></audio></td>
-			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/1_reconstructed_1.wav" type="audio/wav"></audio></td>
-			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/1_reconstructed_2.wav" type="audio/wav"></audio></td>
-			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/1_reconstructed_3.wav" type="audio/wav"></audio></td>
-		</tr>
-	</tbody>
-</table> 
+Input User Audio
+<audio controls>
+  <source src="wavs/Expresso_model_generated/1_user.wav" type="audio/wav">
+</audio>
+
+User (Ground Truth): It's a very good way to put it. Yeah. He was he was part of the family. No other there's no other cat like like him. I don't. don't. Really imagine who's ever. been replacing him.<br>
+
+**Generated Spoken Response**
+
+<audio controls>
+  <source src="wavs/Expresso_model_generated/1_usdm.wav" type="audio/wav">
+</audio>
+<br>
 
 #### Sample 2
-<table>
-	<thead>
-		<tr>
-			<th style="text-align: center">Ground Truth</th>
-			<th style="text-align: center">Reconstructed Audio 1 </th>
-			<th style="text-align: center">Reconstructed Audio 2</th>
-			<th style="text-align: center">Reconstructed Audio 3</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/2_ground_truth.wav" type="audio/wav"></audio></td>
-			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/2_reconstructed_1.wav" type="audio/wav"></audio></td>
-			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/2_reconstructed_2.wav" type="audio/wav"></audio></td>
-			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/2_reconstructed_3.wav" type="audio/wav"></audio></td>
-		</tr>
-	</tbody>
-</table> 
+Input User Audio
+<audio controls>
+  <source src="wavs/Expresso_model_generated/2_user.wav" type="audio/wav">
+</audio>
+
+User (Ground Truth): Oh my gosh. Could he? Tell me about it. Remember when you used to make cookies and he would intentionally bat it around with his paws? He'd he'd get in the dough, and we'd have to throw everything out again.<br>
+
+**Generated Spoken Response**
+
+<audio controls>
+  <source src="wavs/Expresso_model_generated/2_usdm.wav" type="audio/wav">
+</audio>
+<br>
 
 #### Sample 3
-<table>
-	<thead>
-		<tr>
-			<th style="text-align: center">Ground Truth</th>
-			<th style="text-align: center">Reconstructed Audio 1 </th>
-			<th style="text-align: center">Reconstructed Audio 2</th>
-			<th style="text-align: center">Reconstructed Audio 3</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/3_ground_truth.wav" type="audio/wav"></audio></td>
-			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/3_reconstructed_1.wav" type="audio/wav"></audio></td>
-			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/3_reconstructed_2.wav" type="audio/wav"></audio></td>
-			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/3_reconstructed_3.wav" type="audio/wav"></audio></td>
-		</tr>
-	</tbody>
-</table>
+Input User Audio
+<audio controls>
+  <source src="wavs/Expresso_model_generated/3_user.wav" type="audio/wav">
+</audio>
+
+User (Ground Truth): Does anybody want to hear about this? This is not a good thing to tell people about.<br>
+
+**Generated Spoken Response**
+
+<audio controls>
+  <source src="wavs/Expresso_model_generated/3_usdm.wav" type="audio/wav">
+</audio>
+<br>
+
+### Multi-Turn Scenarios (Fisher)
+ **All the speakers below are now seen during training.**
+
+#### Sample 1
+Input Multi-turn Spoken Dialogues
+
+<audio controls>
+  <source src="wavs/Fisher_model_generated/1_user.wav" type="audio/wav">
+</audio>
+A: Oh.<br>
+B: Yeah. So when we were in Florida, Orlando Magic, basketball was the big thing because of Shaquille O'Neil.<br>
+A: I see.<br>
+B: But then he got mad at everybody and left us and went to the Lakers. [LAUGH].<br>
+A: [LAUGH]. So you were kinda involved in basketball too, then?<br>
+
+**Generated Spoken Response**
+
+<audio controls>
+  <source src="wavs/Fisher_model_generated/1_usdm.wav" type="audio/wav">
+</audio>
+<br>
+
+#### Sample 2
+Input Multi-turn Spoken Dialogues
+<audio controls>
+  <source src="wavs/Fisher_model_generated/2_user.wav" type="audio/wav">
+</audio>
+B: Oh no [LAUGH] Did you switch over or try to press another thing?<br>
+A: No, it we were talking, and boom, she was gone and I was gone off her line.<br>
+B: Oh go- maybe she did something.<br>
+A: Oh.<br>
+B: Maybe she hung up or did something happened with her phone so they probably disconnected the both of you.<br>
+A: So I gotta start all over again. [LAUGH]<br>
+B: Yeah. [LAUGH] Oh gosh. Um, so what did you talk about last time was it just<br>
+
+**Generated Spoken Response**
+<audio controls>
+
+  <source src="wavs/Fisher_model_generated/2_usdm.wav" type="audio/wav">
+</audio>
+<br>
+
+#### Sample 3 
+Input Multi-turn Spoken Dialogues
+<audio controls>
+  <source src="wavs/Fisher_model_generated/3_user.wav" type="audio/wav">
+</audio>
+B: How did you get into it?<br>
+A: Ah, I was in a forum and, ah, some guys were talking about it, so I checked it out and I just signed up for it. Thought, "What the heck". Um, man this thing is, ah I can barely hear you. Can you hear me all right?<br>
+B: Yeah. [COUGH] But I'm on a cell phone, so maybe that's why.<br>
+
+**Generated Spoken Response**
+<audio controls>
+
+  <source src="wavs/Fisher_model_generated/3_usdm.wav" type="audio/wav">
+</audio>
+<br>
+
+#### Sample 4
+Input Multi-turn Spoken Dialogues
+<audio controls>
+  <source src="wavs/Fisher_model_generated/4_user.wav" type="audio/wav">
+</audio>
+A: Oh.<br>
+B: So that's been from Chapel Hill so it's been a it's been a big move for me and, you know, I guess the conversations kind of, ah, you know, it the friendship thing is it kind of connects here because I left a lot of friends behind. But, you know, I still try to keep in touch with them and I've made some new friends in LA and I've got a lot of friends up in San- San Francisco.<br>
+A: Okay. Are you mo- are you moving there for a job?<br>
+
+**Generated Spoken Response** 
+<audio controls>
+  <source src="wavs/Fisher_model_generated/4_usdm.wav" type="audio/wav">
+</audio>
+<br><br>
+
+### Out-of-Distribution (OoD) Multi-Turn Scenarios (MELD)
+ **We used USDM trained on Fisher to demonstrate the generalizability of our model to OoD spoken dialog of unseen speakers.**
+
+ #### Sample 1
+Input Multi-turn Spoken Dialogues
+
+<audio controls>
+  <source src="wavs/Fisher_model_generated/1_user.wav" type="audio/wav">
+</audio>
+A: Oh.<br>
+B: Yeah. So when we were in Florida, Orlando Magic, basketball was the big thing because of Shaquille O'Neil.<br>
+A: I see.<br>
+B: But then he got mad at everybody and left us and went to the Lakers. [LAUGH].<br>
+A: [LAUGH]. So you were kinda involved in basketball too, then?<br>
+
+**Generated Spoken Response**
+
+<audio controls>
+  <source src="wavs/Fisher_model_generated/1_usdm.wav" type="audio/wav">
+</audio>
+<br>
+
+#### Sample 2
+Input Multi-turn Spoken Dialogues
+<audio controls>
+  <source src="wavs/Fisher_model_generated/2_user.wav" type="audio/wav">
+</audio>
+B: Oh no [LAUGH] Did you switch over or try to press another thing?<br>
+A: No, it we were talking, and boom, she was gone and I was gone off her line.<br>
+B: Oh go- maybe she did something.<br>
+A: Oh.<br>
+B: Maybe she hung up or did something happened with her phone so they probably disconnected the both of you.<br>
+A: So I gotta start all over again. [LAUGH]<br>
+B: Yeah. [LAUGH] Oh gosh. Um, so what did you talk about last time was it just<br>
+
+**Generated Spoken Response**
+<audio controls>
+
+  <source src="wavs/Fisher_model_generated/2_usdm.wav" type="audio/wav">
+</audio>
+<br>
+
+#### Sample 3 
+Input Multi-turn Spoken Dialogues
+<audio controls>
+  <source src="wavs/Fisher_model_generated/3_user.wav" type="audio/wav">
+</audio>
+B: How did you get into it?<br>
+A: Ah, I was in a forum and, ah, some guys were talking about it, so I checked it out and I just signed up for it. Thought, "What the heck". Um, man this thing is, ah I can barely hear you. Can you hear me all right?<br>
+B: Yeah. [COUGH] But I'm on a cell phone, so maybe that's why.<br>
+
+**Generated Spoken Response**
+<audio controls>
+
+  <source src="wavs/Fisher_model_generated/3_usdm.wav" type="audio/wav">
+</audio>
+<br>
+
+---
 
 ## Model Comparison (DailyTalk, Section 4.1.2)
 
@@ -261,182 +378,69 @@ Text to generate: **They look really good on you. They look comfortable too.**
 </table>
 <br>
 
-## Additional Samples (Appendix A.1)
-### Expressive Spoken Dialog Dataset (Expresso)
- **Since there were no transcripts for Expresso, we used _whisper-large-v3_ to obtain transcripts corresponding to the dataset and used them for training.**
+---
 
+## Unit-to-Speech Reconstruction Analysis (Section 3.1)
+ **We extracted XLS-R based unit from the original audio, and then only those units to reconstruct the audio 3 times.** <br>
+ **Through that sample, we can understand what information is contained in the units.** <br>
+ **We used speech from Expresso (Nguyen et al., 2023), Fisher (Cieri et al., 2004), and GigaSpeech (Chen et al., 2021) datasets.**
+ 
 #### Sample 1
-Input User Audio
-<audio controls>
-  <source src="wavs/Expresso_model_generated/1_user.wav" type="audio/wav">
-</audio>
-
-User (Ground Truth): It's a very good way to put it. Yeah. He was he was part of the family. No other there's no other cat like like him. I don't. don't. Really imagine who's ever. been replacing him.<br>
-
-**Generated Spoken Response**
-
-<audio controls>
-  <source src="wavs/Expresso_model_generated/1_usdm.wav" type="audio/wav">
-</audio>
-<br>
+<table>
+	<thead>
+		<tr>
+			<th style="text-align: center">Ground Truth</th>
+			<th style="text-align: center">Reconstructed Audio 1 </th>
+			<th style="text-align: center">Reconstructed Audio 2</th>
+			<th style="text-align: center">Reconstructed Audio 3</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/1_ground_truth.wav" type="audio/wav"></audio></td>
+			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/1_reconstructed_1.wav" type="audio/wav"></audio></td>
+			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/1_reconstructed_2.wav" type="audio/wav"></audio></td>
+			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/1_reconstructed_3.wav" type="audio/wav"></audio></td>
+		</tr>
+	</tbody>
+</table> 
 
 #### Sample 2
-Input User Audio
-<audio controls>
-  <source src="wavs/Expresso_model_generated/2_user.wav" type="audio/wav">
-</audio>
-
-User (Ground Truth): Oh my gosh. Could he? Tell me about it. Remember when you used to make cookies and he would intentionally bat it around with his paws? He'd he'd get in the dough, and we'd have to throw everything out again.<br>
-
-**Generated Spoken Response**
-
-<audio controls>
-  <source src="wavs/Expresso_model_generated/2_usdm.wav" type="audio/wav">
-</audio>
-<br>
+<table>
+	<thead>
+		<tr>
+			<th style="text-align: center">Ground Truth</th>
+			<th style="text-align: center">Reconstructed Audio 1 </th>
+			<th style="text-align: center">Reconstructed Audio 2</th>
+			<th style="text-align: center">Reconstructed Audio 3</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/2_ground_truth.wav" type="audio/wav"></audio></td>
+			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/2_reconstructed_1.wav" type="audio/wav"></audio></td>
+			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/2_reconstructed_2.wav" type="audio/wav"></audio></td>
+			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/2_reconstructed_3.wav" type="audio/wav"></audio></td>
+		</tr>
+	</tbody>
+</table> 
 
 #### Sample 3
-Input User Audio
-<audio controls>
-  <source src="wavs/Expresso_model_generated/3_user.wav" type="audio/wav">
-</audio>
-
-User (Ground Truth): Does anybody want to hear about this? This is not a good thing to tell people about.<br>
-
-**Generated Spoken Response**
-
-<audio controls>
-  <source src="wavs/Expresso_model_generated/3_usdm.wav" type="audio/wav">
-</audio>
-<br>
-
-### Multi-Turn Scenarios (Fisher)
- **All the speakers below are now seen during training.**
-
-#### Sample 1
-Input Multi-turn Spoken Dialogues
-
-<audio controls>
-  <source src="wavs/Fisher_model_generated/1_user.wav" type="audio/wav">
-</audio>
-A: Oh.<br>
-B: Yeah. So when we were in Florida, Orlando Magic, basketball was the big thing because of Shaquille O'Neil.<br>
-A: I see.<br>
-B: But then he got mad at everybody and left us and went to the Lakers. [LAUGH].<br>
-A: [LAUGH]. So you were kinda involved in basketball too, then?<br>
-
-**Generated Spoken Response**
-
-<audio controls>
-  <source src="wavs/Fisher_model_generated/1_usdm.wav" type="audio/wav">
-</audio>
-<br>
-
-#### Sample 2
-Input Multi-turn Spoken Dialogues
-<audio controls>
-  <source src="wavs/Fisher_model_generated/2_user.wav" type="audio/wav">
-</audio>
-B: Oh no [LAUGH] Did you switch over or try to press another thing?<br>
-A: No, it we were talking, and boom, she was gone and I was gone off her line.<br>
-B: Oh go- maybe she did something.<br>
-A: Oh.<br>
-B: Maybe she hung up or did something happened with her phone so they probably disconnected the both of you.<br>
-A: So I gotta start all over again. [LAUGH]<br>
-B: Yeah. [LAUGH] Oh gosh. Um, so what did you talk about last time was it just<br>
-
-**Generated Spoken Response**
-<audio controls>
-
-  <source src="wavs/Fisher_model_generated/2_usdm.wav" type="audio/wav">
-</audio>
-<br>
-
-#### Sample 3 
-Input Multi-turn Spoken Dialogues
-<audio controls>
-  <source src="wavs/Fisher_model_generated/3_user.wav" type="audio/wav">
-</audio>
-B: How did you get into it?<br>
-A: Ah, I was in a forum and, ah, some guys were talking about it, so I checked it out and I just signed up for it. Thought, "What the heck". Um, man this thing is, ah I can barely hear you. Can you hear me all right?<br>
-B: Yeah. [COUGH] But I'm on a cell phone, so maybe that's why.<br>
-
-**Generated Spoken Response**
-<audio controls>
-
-  <source src="wavs/Fisher_model_generated/3_usdm.wav" type="audio/wav">
-</audio>
-<br>
-
-#### Sample 4
-Input Multi-turn Spoken Dialogues
-<audio controls>
-  <source src="wavs/Fisher_model_generated/4_user.wav" type="audio/wav">
-</audio>
-A: Oh.<br>
-B: So that's been from Chapel Hill so it's been a it's been a big move for me and, you know, I guess the conversations kind of, ah, you know, it the friendship thing is it kind of connects here because I left a lot of friends behind. But, you know, I still try to keep in touch with them and I've made some new friends in LA and I've got a lot of friends up in San- San Francisco.<br>
-A: Okay. Are you mo- are you moving there for a job?<br>
-
-**Generated Spoken Response** 
-<audio controls>
-  <source src="wavs/Fisher_model_generated/4_usdm.wav" type="audio/wav">
-</audio>
-<br><br>
-
-### Out-of-Distribution (OoD) Multi-Turn Scenarios (MELD)
- **We used USDM trained on Fisher to demonstrate the generalizability of our model to out-of-distribution spoken dialog of unseen speakers.**
-
- #### Sample 1
-Input Multi-turn Spoken Dialogues
-
-<audio controls>
-  <source src="wavs/Fisher_model_generated/1_user.wav" type="audio/wav">
-</audio>
-A: Oh.<br>
-B: Yeah. So when we were in Florida, Orlando Magic, basketball was the big thing because of Shaquille O'Neil.<br>
-A: I see.<br>
-B: But then he got mad at everybody and left us and went to the Lakers. [LAUGH].<br>
-A: [LAUGH]. So you were kinda involved in basketball too, then?<br>
-
-**Generated Spoken Response**
-
-<audio controls>
-  <source src="wavs/Fisher_model_generated/1_usdm.wav" type="audio/wav">
-</audio>
-<br>
-
-#### Sample 2
-Input Multi-turn Spoken Dialogues
-<audio controls>
-  <source src="wavs/Fisher_model_generated/2_user.wav" type="audio/wav">
-</audio>
-B: Oh no [LAUGH] Did you switch over or try to press another thing?<br>
-A: No, it we were talking, and boom, she was gone and I was gone off her line.<br>
-B: Oh go- maybe she did something.<br>
-A: Oh.<br>
-B: Maybe she hung up or did something happened with her phone so they probably disconnected the both of you.<br>
-A: So I gotta start all over again. [LAUGH]<br>
-B: Yeah. [LAUGH] Oh gosh. Um, so what did you talk about last time was it just<br>
-
-**Generated Spoken Response**
-<audio controls>
-
-  <source src="wavs/Fisher_model_generated/2_usdm.wav" type="audio/wav">
-</audio>
-<br>
-
-#### Sample 3 
-Input Multi-turn Spoken Dialogues
-<audio controls>
-  <source src="wavs/Fisher_model_generated/3_user.wav" type="audio/wav">
-</audio>
-B: How did you get into it?<br>
-A: Ah, I was in a forum and, ah, some guys were talking about it, so I checked it out and I just signed up for it. Thought, "What the heck". Um, man this thing is, ah I can barely hear you. Can you hear me all right?<br>
-B: Yeah. [COUGH] But I'm on a cell phone, so maybe that's why.<br>
-
-**Generated Spoken Response**
-<audio controls>
-
-  <source src="wavs/Fisher_model_generated/3_usdm.wav" type="audio/wav">
-</audio>
-<br>
+<table>
+	<thead>
+		<tr>
+			<th style="text-align: center">Ground Truth</th>
+			<th style="text-align: center">Reconstructed Audio 1 </th>
+			<th style="text-align: center">Reconstructed Audio 2</th>
+			<th style="text-align: center">Reconstructed Audio 3</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/3_ground_truth.wav" type="audio/wav"></audio></td>
+			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/3_reconstructed_1.wav" type="audio/wav"></audio></td>
+			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/3_reconstructed_2.wav" type="audio/wav"></audio></td>
+			<td style="text-align: center"><audio controls style="width: 150px;"><source src="wavs/unit-based-Voicebox/3_reconstructed_3.wav" type="audio/wav"></audio></td>
+		</tr>
+	</tbody>
+</table>
