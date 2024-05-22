@@ -55,7 +55,7 @@ User (Ground Truth): Does anybody want to hear about this? This is not a good th
 <br>
 
 ### Multi-Turn Scenarios (Fisher)
- **All the speakers below are now seen during training.**
+ **All the speakers below are not seen during training.**
 
 #### Sample 1
 Input Multi-turn Spoken Dialogues
