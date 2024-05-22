@@ -17,6 +17,8 @@ Input User Audio
 
 User (Ground Truth): It's a very good way to put it. Yeah. He was he was part of the family. No other there's no other cat like like him. I don't. don't. Really imagine who's ever. been replacing him.<br>
 
+<br>**Generated Text Response**: Yeah. I mean, I know he was a bit of a pain in the butt, but, I mean, I don't think anybody could ever replace him. He was just that one of a kind of
+
 **Generated Spoken Response**
 
 <audio controls>
@@ -32,6 +34,8 @@ Input User Audio
 
 User (Ground Truth): Oh my gosh. Could he? Tell me about it. Remember when you used to make cookies and he would intentionally bat it around with his paws? He'd he'd get in the dough, and we'd have to throw everything out again.<br>
 
+<br>**Generated Text Response**: Yeah. That was a lot of wasted dough and a lot of waste time and energy. That was not a good stretch of our resources here on Earth. Yeah.
+
 **Generated Spoken Response**
 
 <audio controls>
@@ -46,6 +50,8 @@ Input User Audio
 </audio>
 
 User (Ground Truth): Does anybody want to hear about this? This is not a good thing to tell people about.<br>
+
+<br>**Generated Text Response**: I don't think it does sound like a good thing to tell people about.
 
 **Generated Spoken Response**
 
@@ -69,6 +75,8 @@ A: I see.<br>
 B: But then he got mad at everybody and left us and went to the Lakers. [LAUGH].<br>
 A: [LAUGH]. So you were kinda involved in basketball too, then?<br>
 
+<br>**Generated Text Response**: Yeah, yeah. And um, but then when he went to the Lakers, that was kinda sad. It's like, oh, no. [LAUGH].
+
 **Generated Spoken Response**
 
 <audio controls>
@@ -89,6 +97,8 @@ B: Maybe she hung up or did something happened with her phone so they probably d
 A: So I gotta start all over again. [LAUGH]<br>
 B: Yeah. [LAUGH] Oh gosh. Um, so what did you talk about last time was it just<br>
 
+<br>**Generated Text Response**: Oh, it was about sports.
+
 **Generated Spoken Response**
 <audio controls>
 
@@ -104,6 +114,8 @@ Input Multi-turn Spoken Dialogues
 B: How did you get into it?<br>
 A: Ah, I was in a forum and, ah, some guys were talking about it, so I checked it out and I just signed up for it. Thought, "What the heck". Um, man this thing is, ah I can barely hear you. Can you hear me all right?<br>
 B: Yeah. [COUGH] But I'm on a cell phone, so maybe that's why.<br>
+
+<br>**Generated Text Response**: Oh, okay. Yeah, maybe because I keep getting disconnected.
 
 **Generated Spoken Response**
 <audio controls>
@@ -121,69 +133,13 @@ A: Oh.<br>
 B: So that's been from Chapel Hill so it's been a it's been a big move for me and, you know, I guess the conversations kind of, ah, you know, it the friendship thing is it kind of connects here because I left a lot of friends behind. But, you know, I still try to keep in touch with them and I've made some new friends in LA and I've got a lot of friends up in San- San Francisco.<br>
 A: Okay. Are you mo- are you moving there for a job?<br>
 
+<br>**Generated Text Response**: No. I just kinda I just kinda wanted to go to college up there. I wanted to go to college in San Jose. So.
+
 **Generated Spoken Response** 
 <audio controls>
   <source src="wavs/Fisher_model_generated/4_usdm.wav" type="audio/wav">
 </audio>
 <br><br>
-
-### Out-of-Distribution (OoD) Multi-Turn Scenarios (MELD)
- **We used USDM trained on Fisher to demonstrate the generalizability of our model to OoD spoken dialog of unseen speakers.**
-
-#### Sample 1
-Input Multi-turn Spoken Dialogues
-
-<audio controls>
-  <source src="wavs/Fisher_model_generated/1_user.wav" type="audio/wav">
-</audio>
-A: Oh.<br>
-B: Yeah. So when we were in Florida, Orlando Magic, basketball was the big thing because of Shaquille O'Neil.<br>
-A: I see.<br>
-B: But then he got mad at everybody and left us and went to the Lakers. [LAUGH].<br>
-A: [LAUGH]. So you were kinda involved in basketball too, then?<br>
-
-**Generated Spoken Response**
-
-<audio controls>
-  <source src="wavs/Fisher_model_generated/1_usdm.wav" type="audio/wav">
-</audio>
-<br>
-
-#### Sample 2
-Input Multi-turn Spoken Dialogues
-<audio controls>
-  <source src="wavs/Fisher_model_generated/2_user.wav" type="audio/wav">
-</audio>
-B: Oh no [LAUGH] Did you switch over or try to press another thing?<br>
-A: No, it we were talking, and boom, she was gone and I was gone off her line.<br>
-B: Oh go- maybe she did something.<br>
-A: Oh.<br>
-B: Maybe she hung up or did something happened with her phone so they probably disconnected the both of you.<br>
-A: So I gotta start all over again. [LAUGH]<br>
-B: Yeah. [LAUGH] Oh gosh. Um, so what did you talk about last time was it just<br>
-
-**Generated Spoken Response**
-<audio controls>
-
-  <source src="wavs/Fisher_model_generated/2_usdm.wav" type="audio/wav">
-</audio>
-<br>
-
-#### Sample 3 
-Input Multi-turn Spoken Dialogues
-<audio controls>
-  <source src="wavs/Fisher_model_generated/3_user.wav" type="audio/wav">
-</audio>
-B: How did you get into it?<br>
-A: Ah, I was in a forum and, ah, some guys were talking about it, so I checked it out and I just signed up for it. Thought, "What the heck". Um, man this thing is, ah I can barely hear you. Can you hear me all right?<br>
-B: Yeah. [COUGH] But I'm on a cell phone, so maybe that's why.<br>
-
-**Generated Spoken Response**
-<audio controls>
-
-  <source src="wavs/Fisher_model_generated/3_usdm.wav" type="audio/wav">
-</audio>
-<br>
 
 ---
 
